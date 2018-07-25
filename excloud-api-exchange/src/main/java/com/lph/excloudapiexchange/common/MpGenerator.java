@@ -39,9 +39,9 @@ public class MpGenerator {
 
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
-        gc.setAuthor("Mht");
-        gc.setOutputDir("D://workspace/spring-boot-mybatis/src/main/java");
-        gc.setFileOverride(false);// 是否覆盖同名文件，默认是false
+        gc.setAuthor("lph");
+        gc.setOutputDir("D://projects/excloud/excloud-api-exchange/src/test/mybatisgeneratorfiles");
+        gc.setFileOverride(true);// 是否覆盖同名文件，默认是false
         gc.setActiveRecord(true);// 不需要ActiveRecord特性的请改为false
         gc.setEnableCache(false);// XML 二级缓存
         gc.setBaseResultMap(true);// XML ResultMap
@@ -69,15 +69,15 @@ public class MpGenerator {
         dsc.setDriverName("com.mysql.jdbc.Driver");
         dsc.setUsername("root");
         dsc.setPassword("root");
-        dsc.setUrl("jdbc:mysql://localhost:3306/excloud?useUnicode=true&characterEncoding=utf8");
+        dsc.setUrl("jdbc:mysql://45.78.10.183:3306/excloud?useUnicode=true&characterEncoding=utf8");
         mpg.setDataSource(dsc);
 
         // 策略配置
         StrategyConfig strategy = new StrategyConfig();
         // strategy.setCapitalMode(true);// 全局大写命名 ORACLE 注意
-        strategy.setTablePrefix(new String[] { "user_" });// 此处可以修改为您的表前缀
+        strategy.setTablePrefix(new String[] { "ex_" });// 此处可以修改为您的表前缀
         strategy.setNaming(NamingStrategy.nochange);// 表名生成策略
-        strategy.setInclude(new String[] { "user" }); // 需要生成的表
+        strategy.setInclude(new String[] { "ex_user" }); // 需要生成的表
         // strategy.setExclude(new String[]{"test"}); // 排除生成的表
         // 自定义实体父类
         // strategy.setSuperEntityClass("com.baomidou.demo.TestEntity");
@@ -102,7 +102,7 @@ public class MpGenerator {
         // 包配置
         PackageConfig pc = new PackageConfig();
         pc.setParent("com.lph.excloudapiexchange");
-//        pc.setModuleName("test");
+        //pc.setModuleName("test");
         mpg.setPackageInfo(pc);
 
         // 注入自定义配置，可以在 VM 中使用 cfg.abc 【可无】
