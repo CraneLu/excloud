@@ -19,10 +19,4 @@ public class ExcloudApiExchangeApplicationTests {
 	public void contextLoads() {
 	}
 
-	@Test
-	public void testUser(){
-		User user = userService.getUserById(1L);
-		System.out.println(user.getUser_name());
-	}
-
 }

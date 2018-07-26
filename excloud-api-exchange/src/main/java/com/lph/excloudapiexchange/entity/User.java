@@ -1,5 +1,6 @@
 package com.lph.excloudapiexchange.entity;
 
+import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.enums.IdType;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.activerecord.Model;
@@ -25,7 +26,8 @@ public class User extends Model<User> {
     /**
      * 用户名
      */
-    private String user_name;
+//    @TableField(value="user_name")
+    private String userName;
 
     public Long getId() {
         return id;
@@ -34,12 +36,13 @@ public class User extends Model<User> {
     public void setId(Long id) {
         this.id = id;
     }
-    public String getUser_name() {
-        return user_name;
+
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     @Override
@@ -51,7 +54,7 @@ public class User extends Model<User> {
     public String toString() {
         return "User{" +
         "id=" + id +
-        ", user_name=" + user_name +
+        ", userName=" + userName +
         "}";
     }
 }
