@@ -2,10 +2,11 @@ package com.lph.excloudapiexchange;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cache.annotation.EnableCaching;
 
 @SpringBootApplication
-@EnableEurekaClient
+//@EnableEurekaClient
+@EnableCaching
 public class ExcloudApiExchangeApplication {
 
 	public static void main(String[] args) {

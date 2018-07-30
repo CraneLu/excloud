@@ -37,7 +37,7 @@ public class Trade extends Model<Trade> {
     /**
      * 成交时间
      */
-    private Date trade_time;
+    private Date tradeTime;
 
     public Long getId() {
         return id;
@@ -60,12 +60,13 @@ public class Trade extends Model<Trade> {
     public void setToken(String token) {
         this.token = token;
     }
-    public Date getTrade_time() {
-        return trade_time;
+
+    public Date getTradeTime() {
+        return tradeTime;
     }
 
-    public void setTrade_time(Date trade_time) {
-        this.trade_time = trade_time;
+    public void setTradeTime(Date tradeTime) {
+        this.tradeTime = tradeTime;
     }
 
     @Override
@@ -79,7 +80,7 @@ public class Trade extends Model<Trade> {
         "id=" + id +
         ", price=" + price +
         ", token=" + token +
-        ", trade_time=" + trade_time +
+        ", tradeTime=" + tradeTime +
         "}";
     }
 }
