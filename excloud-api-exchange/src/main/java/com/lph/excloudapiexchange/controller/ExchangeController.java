@@ -5,22 +5,32 @@ import com.lph.excloudapiexchange.entity.User;
 import com.lph.excloudapiexchange.mapper.TradeMapper;
 import com.lph.excloudapiexchange.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@Configuration
+@EnableAutoConfiguration
 @RestController
+@RefreshScope
 @RequestMapping("exchange")
 public class ExchangeController {
 
-    @Autowired
-    IUserService userService;
+    @Value("${name}")
+    private String name;
 
-    @Autowired
-    TradeMapper tradeMapper;
+//    @Autowired
+//    IUserService userService;
+//
+//    @Autowired
+//    TradeMapper tradeMapper;
 
 //    @Autowired
 //    private DiscoveryClient discoveryClient;
@@ -36,9 +46,14 @@ public class ExchangeController {
 //
 //    }
 
-    @GetMapping("user")
-    public String getUserById(Long id){
-        User user = userService.getUserById(id);
-        return user.getUserName();
+//    @GetMapping("user")
+//    public String getUserById(Long id){
+//        User user = userService.getUserById(id);
+//        return user.getUserName();
+//    }
+
+    @RequestMapping("/hi")
+    public String hi(){
+        return "Hello "+name;
     }
 }
