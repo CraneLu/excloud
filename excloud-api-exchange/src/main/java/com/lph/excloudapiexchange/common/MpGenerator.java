@@ -29,7 +29,7 @@ public class MpGenerator {
 
     /**
      * <p>
-     * MySQL 生成
+     * MySQL 实体生成
      * </p>
      */
     public static void main(String[] args) {
