@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.lph</groupId>
-	<artifactId>web</artifactId>
+	<artifactId>zookeeper-lock</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>web</name>
+	<name>zookeeper-lock</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

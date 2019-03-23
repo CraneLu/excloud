@@ -14,7 +14,7 @@ public class ZookeeperDistributedLockAspect {
 
     @Autowired private DistributedLockByCurator lockByCurator;
 
-    @Pointcut("@annotation(Lock)")
+    @Pointcut("@annotation(com.lph.zookeeperlock.annotation.Lock)")
     public void zookeeperDistributedLock(){}
 
     @Around(value = "zookeeperDistributedLock()")
