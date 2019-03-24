@@ -1,14 +1,17 @@
 package com.lph.distributedlock.config;
 
+import com.lph.distributedlock.condition.ZookeeperLockCondition;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.framework.recipes.locks.InterProcessMutex;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
 
+@Conditional(ZookeeperLockCondition.class)
 @Configuration
-public class CuratorFrameworkConfig {
+public class ZookeeperLockConfig {
 
     @Bean(initMethod = "start", destroyMethod = "close")
     public CuratorFramework curatorFramework(){
@@ -23,7 +26,7 @@ public class CuratorFrameworkConfig {
 
     @Bean
     public InterProcessMutex interProcessMutex(){
-        return new InterProcessMutex(curatorFramework(), "/locks");
+        return new InterProcessMutex(curatorFramework(), "/locks-root");
     }
 
 }
