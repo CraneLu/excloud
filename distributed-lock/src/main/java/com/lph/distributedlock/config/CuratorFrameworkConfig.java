@@ -1,4 +1,4 @@
-package com.lph.zookeeperlock.config;
+package com.lph.distributedlock.config;
 
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;

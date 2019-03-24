@@ -1,7 +1,7 @@
-package com.lph.zookeeperlock.controller;
+package com.lph.distributedlock.controller;
 
-import com.lph.zookeeperlock.annotation.Lock;
-import com.lph.zookeeperlock.service.FileService;
+import com.lph.distributedlock.annotation.ZkLock;
+import com.lph.distributedlock.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,7 +11,7 @@ public class TestController {
 
     @Autowired private FileService fileService;
 
-    @Lock
+    @ZkLock
     @GetMapping("/curator")
     public Object curator(){
         fileService.addOne();

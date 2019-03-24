@@ -1,6 +1,6 @@
-package com.lph.zookeeperlock.aspect;
+package com.lph.distributedlock.aspect;
 
-import com.lph.zookeeperlock.DistributedLockByCurator;
+import com.lph.distributedlock.service.impl.DistributedLockByCurator;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -14,7 +14,7 @@ public class ZookeeperDistributedLockAspect {
 
     @Autowired private DistributedLockByCurator lockByCurator;
 
-    @Pointcut("@annotation(com.lph.zookeeperlock.annotation.Lock)")
+    @Pointcut("@annotation(com.lph.distributedlock.annotation.ZkLock)")
     public void zookeeperDistributedLock(){}
 
     @Around(value = "zookeeperDistributedLock()")

@@ -1,15 +1,16 @@
-package com.lph.zookeeperlock;
+package com.lph.distributedlock.service.impl;
 
+import com.lph.distributedlock.service.ILockService;
 import org.apache.curator.framework.recipes.locks.InterProcessMutex;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.concurrent.TimeUnit;
 
 //import org.apache.log4j.Logger;
 
-@Component
-public class DistributedLockByCurator {
+@Service
+public class DistributedLockByCurator implements ILockService {
 
 //    private final Logger logger = Logger.getLogger(DistributedLockByCurator.class);
     private static final String LOCK_ROOT_PATH = "/locks";
@@ -36,10 +37,5 @@ public class DistributedLockByCurator {
             System.out.println("...release mutex exctption..."+e.getMessage());
         }
     }
-
-    public void addWatcher(){
-
-    }
-
 
 }

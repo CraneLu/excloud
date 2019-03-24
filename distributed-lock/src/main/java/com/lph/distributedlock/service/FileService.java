@@ -1,4 +1,4 @@
-package com.lph.zookeeperlock.service;
+package com.lph.distributedlock.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;

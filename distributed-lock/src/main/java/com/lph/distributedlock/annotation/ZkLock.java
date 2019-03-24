@@ -1,11 +1,11 @@
-package com.lph.zookeeperlock.annotation;
+package com.lph.distributedlock.annotation;
 
 import java.lang.annotation.*;
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface Lock {
+public @interface ZkLock {
 
     String value() default "";
 }

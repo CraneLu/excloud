@@ -1,14 +1,13 @@
-package com.lph.zookeeperlock;
+package com.lph.distributedlock;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-//@EnableAspectJAutoProxy(proxyTargetClass=true)
-public class ZookeeperLockApplication {
+public class DistributedLockApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ZookeeperLockApplication.class, args);
+		SpringApplication.run(DistributedLockApplication.class, args);
 	}
 
 }
