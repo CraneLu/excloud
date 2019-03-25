@@ -18,10 +18,10 @@ public @interface DistributedLock {
     LockFailAction action() default LockFailAction.CONTINUE;
 
     /** 重试的间隔时间,设置GIVEUP忽略此项*/
-    long retrysleepMills() default 200;
+    long retrysleepMills() default 500;
 
     /** 重试次数*/
-    int retryTimes() default 5;
+    int retryTimes() default 10;
 
     enum LockFailAction{
         /** 放弃 */

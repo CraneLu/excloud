@@ -15,6 +15,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import sun.reflect.generics.tree.ClassSignature;
 
 import java.lang.reflect.Method;
 
@@ -33,9 +36,9 @@ public class DistributedLockAspect {
         boolean isLocked = false;
         ILockService lockService;
         String lockType = getLockType();
-        Method method = ((MethodSignature) pjp.getSignature()).getMethod();
-        DistributedLock distributedLock = method.getAnnotation(DistributedLock.class);
-        String key = distributedLock.key();
+        Method sMethod = ((MethodSignature) pjp.getSignature()).getMethod();
+        String key = getLockKey(sMethod);
+        DistributedLock distributedLock = sMethod.getAnnotation(DistributedLock.class);
         if("zookeeper".equalsIgnoreCase(lockType)){
             lockService = applicationContext.getBean(DistributedLockByZookeeper.class);
             isLocked = lockService.acquireLock(key);
@@ -45,6 +48,9 @@ public class DistributedLockAspect {
             int retryTimes = distributedLock.retryTimes();
             long retrySleepMilliSeconds = distributedLock.retrysleepMills();
             isLocked = lockService.acquireLock(key, expire, retryTimes, retrySleepMilliSeconds);
+            if(!isLocked){
+                System.out.println("...获取redis锁失败...");
+            }
         } else {
             throw new RuntimeException("配置{distributed-lock.type}异常");
         }
@@ -59,6 +65,11 @@ public class DistributedLockAspect {
     private String getLockType(){
         return applicationContext.getEnvironment()
                 .getProperty("distributed-lock.type");
+    }
+
+    private String getLockKey(Method method){
+        RequestMapping methodAnnotion = method.getAnnotation(RequestMapping.class);
+        return methodAnnotion.value()[0].substring(1);
     }
 
 }
